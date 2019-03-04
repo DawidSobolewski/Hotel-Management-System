@@ -1,0 +1,30 @@
+<aura:component >
+    <aura:attribute name="res" type="Reservation__c" />
+    <h1>SUCCESS! Reservation has been properly inserted in apex.</h1>
+    <table>
+        <tr>
+            <th>Client</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Hotel</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Room</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>From</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>To</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Cost</th>
+            <td></td>
+        </tr>
+    </table>
+</aura:component>

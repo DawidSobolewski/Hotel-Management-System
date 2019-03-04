@@ -1,0 +1,106 @@
+<aura:component >
+
+    <aura:attribute name="hotels" type="Hotel__c[]" />
+    <aura:attribute name="hotelId" type="String" />  
+    <aura:attribute name="roomType" type="String" />
+    <aura:attribute name="startDate" type="String" />
+    <aura:attribute name="endDate" type="String" />
+    <aura:attribute name="tv" type="Boolean" />
+    <aura:attribute name="minibar" type="Boolean" />
+    <aura:attribute name="bathroom" type="Boolean" />
+    <aura:attribute name="balcony" type="Boolean" />
+    
+    <aura:attribute name="errors" type="List" />
+    <aura:attribute name="errorSwitch" type="Boolean" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="sendHotelId" event="c:hotelNameEvent" action="{!c.storeHotelId}"/>
+    <aura:registerEvent name="sendRoomInputValues" type="c:RoomInputValues" />
+
+
+    <c:HotelPicklist aura:id="hotelPicklist" hotels="{! v.hotels}"/>
+
+    <lightning:select 
+    aura:id="roomTypeSelect" 
+    name="roomTypeSelect" 
+    label="Select a room type..." 
+    messageWhenValueMissing="Please, select a room type!"  
+    required="true"
+    onchange="{! c.handleRoomTypeSelect }">
+        <option value="">Choose one...</option>     
+        <option value="1">Single</option>
+        <option value="2">Double</option>
+        <option value="3">Triple</option>
+        <option value="4">Four-Person</option>
+        <option value="Any">Any</option>
+    </lightning:select> 
+
+    <lightning:input
+        aura:id="tv"
+        name ="tv"
+        type="checkbox"
+        label="with TV"
+        checked="{!v.tv}"
+         />
+
+    <lightning:input
+        aura:id="balcony"
+        name="balcony"
+        type="checkbox"
+        label="with Balcony"
+        checked= "{!v.balcony}"
+        />
+
+    <lightning:input
+        aura:id="bathroom"
+        name = "bathroom"
+        type="checkbox"
+        label="with Bathroom"
+        checked="{!v.bathroom}"
+        />
+
+    <lightning:input
+        aura:id="minibar"
+        type="checkbox"
+        name="minibar"
+        label="with MiniBar"
+        checked="{!v. minibar}"/>
+
+    <lightning:input 
+        aura:id="startDate" 
+        type="date" 
+        label="From" 
+        value="{!v.startDate}" 
+        onchange="{!c.handleDateInput}"
+        required="true"
+        messageWhenValueMissing="Please, select a date!"
+        messageWhenBadInput="You must enter a correct date!"/>
+
+    
+
+    <lightning:input 
+        aura:id="endDate" 
+        type="date" 
+        label="To" 
+        value="{!v.endDate}" 
+        onchange="{!c.handleDateInput}"
+        required="true"
+        messageWhenValueMissing="Please, select a date!"
+        messageWhenBadInput="You must enter a correct date!"/>
+
+        <aura:if isTrue="{!v.errorSwitch}">
+            <ui:message title="Error" severity="error" closable="true">
+                <aura:iteration items="{!v.errors}" var="error">
+                    {! error} <br/>
+                </aura:iteration>
+            </ui:message>
+        </aura:if>
+
+    <lightning:button 
+        variant="success" 
+        label="Continue" 
+        title="Success" 
+        onclick="{! c.handleButtonClick }"/>
+
+
+</aura:component>

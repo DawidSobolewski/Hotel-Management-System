@@ -1,0 +1,35 @@
+<aura:component controller="ApexController">
+	<aura:attribute name="rooms" type="Room__c"/>
+	<aura:attribute name="hotel" type="Hotel__C"/>
+	<aura:attribute name="customer" type="Contact"/>
+
+<c:ReservationDetails aura:id="details" rooms="{!v.rooms}" hotel="{!v.hotel}"/> 
+<aura:attribute type="Aura.Component[]" name="buttons" />
+
+<aura:attribute name="FirstName" type="String"/>
+<aura:attribute name="LastName" type="String"/>
+<aura:attribute name="Email" type="String"/>
+
+<aura:handler name="sendNewClientInput" event="c:NewClientEvent" action="{!c.handleNewClientInput}" /> 
+
+{! v.body } 
+
+<lightning:button 
+	aura:id="cancelButton"
+	variant="destructive" 
+	label="Cancel" 
+	title="Cancel your reservations" 
+	onclick="{! c.handleCancelClick }"/>
+	
+	<lightning:button 
+	aura:id="newClientButton"
+	variant="success" 
+	label="New Client" 
+	title="Create a new client record" 
+	onclick="{! c.handleNewClientClick }"/>
+
+
+
+{! v.buttons }
+
+</aura:component>

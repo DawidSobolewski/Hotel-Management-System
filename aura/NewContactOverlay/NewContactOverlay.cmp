@@ -1,0 +1,12 @@
+<aura:component >
+
+    <aura:attribute name="FirstName" type="String"/>
+    <aura:attribute name="LastName" type="String"/>
+    <aura:attribute name="Email" type="String"/>
+
+    
+    <lightning:input type="text" label="First Name"/>
+    <lightning:input type="text" label="Last Name"/>
+    <lightning:input type="email" label="Email"/>
+    
+</aura:component>

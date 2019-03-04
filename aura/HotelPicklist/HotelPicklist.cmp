@@ -1,0 +1,23 @@
+<aura:component  controller="HotelPicklistController">
+    
+    <aura:attribute name="hotels" type="Hotel__c[]"/>
+    <aura:attribute name="hotelId" type="String"/>
+
+    <aura:registerEvent name="sendHotelId" type="c:hotelNameEvent"/>
+
+    <lightning:select 
+    aura:id="select" 
+    name="select" 
+    label="Select a hotel..."
+    onchange="{! c.onChange }"
+    messageWhenValueMissing="Please, select a hotel!" 
+    required="true">
+
+        <option value="">Choose one...</option>
+        <aura:iteration items="{!v.hotels}" var="hotel">
+            <option text="{!hotel.Name}" value="{!hotel.Id}" selected="{!hotel.selected}"/>
+        </aura:iteration>
+
+    </lightning:select> 
+
+</aura:component>

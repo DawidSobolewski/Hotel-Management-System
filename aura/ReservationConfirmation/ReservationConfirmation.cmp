@@ -1,0 +1,62 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="rooms" type="Room__c"/>
+    <aura:attribute name="hotel" type="Hotel__C"/>
+    <aura:attribute name="oRecord" type="sObject" />
+    <aura:attribute name="IconName" type="string"/>
+
+    <aura:registerEvent name="oSelectedRecordEvent" type="c:selectedsObjectRecordEvent"/>
+
+    <table>
+            <tr>
+                <th>Hotel name</th>
+                <td>{! v.hotel.Name}</td>
+            </tr>
+            <tr>
+                <th>Room number</th>
+                <tr>{! v.rooms.Room_Number__c}</tr>
+            </tr>
+            <tr>
+                <th>Room type</th>
+                <td>{! v.rooms.Type__c }</td>
+            </tr>
+            <tr>
+                <th>Balcony</th>
+                <td>{! v.rooms.Balcony_included__c}</td>	
+            </tr>
+            <tr>
+                <th>Bathroom</th>
+                <td>{! v.rooms.Bathroom_included__c}</td>	
+            </tr>
+            <tr>
+                <th>MiniBar</th>
+                <td>{! v.rooms.Minibar__c}</td>
+            </tr>
+            <tr>
+                <th>TV</th>
+                <td>{! v.rooms.TV__c }</td>	
+            </tr>
+            <tr>
+                <th>Floor</th>
+                <td>{! v.rooms.Floor__c}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{! v.rooms.Cost__c}</td>	
+            </tr>
+        </table>
+
+        <li role="presentation" class="slds-listbox__item" onclick="{!c.selectRecord}">
+                <span id="listbox-option-unique-id-01" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                      <span class="slds-media__figure">
+                          <span class="slds-icon_container" title="Description of icon when needed">
+                            <lightning:icon iconName="{!v.IconName}" class="slds-icon slds-icon_small" size="small" alternativeText="icon"/>
+                            <span class="slds-assistive-text">Description of icon</span>
+                          </span>
+                      </span>    
+                      <span class="slds-media__body">  
+                          <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!v.oRecord.Name}</span>
+                      </span>
+                </span>
+            </li>
+
+</aura:component>

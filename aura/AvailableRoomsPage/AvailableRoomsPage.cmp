@@ -1,0 +1,34 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="AvailableRoomsPageController">
+    
+    <aura:attribute name="rooms" type="Room__c[]"/>
+    <aura:attribute name="filtered" type="Room__c[]"/>
+    <aura:attribute name="reservations" type="Reservation__c[]"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="endDate" type="Date"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="sendHotelId" event="c:hotelNameEvent" action="{!c.sendRoomsRequest}"/>
+    <div style="width: 25vw; margin: 0 auto;">
+    <h1>Available Rooms Page</h1>
+    <c:HotelPicklist /> 
+
+    <lightning:select aura:id="select" name="select" label="Select a room type..." onchange="{! c.onTypeSelect }">
+        <option value="Any">Any</option>
+        <option value="1">Single</option>
+        <option value="2">Double</option>
+        <option value="3">Triple</option>
+        <option value="4">Four-Person</option>
+    </lightning:select>
+
+    <lightning:input aura:id="startDate" type="date" label="From" value="{!v.startDate}" onchange="{!c.onDateInputChange}"/>
+    <lightning:input aura:id="endDate" type="date" label="To" value="{!v.endDate}" onchange="{!c.onDateInputChange}"/>
+    </div>
+    <div style="height: 500px; padding: 10px; text-align: center">
+            <lightning:datatable 
+                    keyField="id"
+                    data="{! v.filtered }"
+                    columns="{! v.columns}"
+                    hideCheckboxColumn="true"/>
+    </div>
+</aura:component>

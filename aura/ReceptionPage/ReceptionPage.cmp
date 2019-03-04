@@ -1,0 +1,17 @@
+<aura:component controller="ApexController" implements="flexipage:availableForAllPageTypes" access="global">
+
+    <aura:attribute name="hotels" type="Hotel__c[]" />
+    <aura:attribute name="hotel" type="Hotel__C" />
+	<aura:attribute name="rooms" type="Room__c[]" />
+	<aura:attribute name="filtered" type="Room__c[]" />
+    <aura:attribute name="reservations" type="Reservation__c[]" />
+    <aura:attribute name="switch" type="boolean" />
+
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="sendRoomInputValues" event="c:RoomInputValues" action="{!c.handleRoomInput}"/>
+    
+    {!v.body}
+
+
+</aura:component>

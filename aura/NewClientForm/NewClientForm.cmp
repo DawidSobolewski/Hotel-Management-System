@@ -1,0 +1,13 @@
+<aura:component >
+
+    <aura:attribute name="FirstName" type="String"/>
+    <aura:attribute name="LastName" type="String"/>
+    <aura:attribute name="Email" type="String"/>
+
+    <aura:registerEvent name="sendNewClientInput" type="c:NewClientEvent" />
+    
+    <lightning:input type="text" label="First Name" required="true" value="{! v.FirstName}" onchange="{! c.handleChange }"/>
+    <lightning:input type="text" label="Last Name" required="true" value="{! v.LastName}" onchange="{!c.handleChange}"/>
+    <lightning:input type="email" label="Email" required="true" value="{! v.Email}" onchange="{!c.handleChange}"/> 
+     
+</aura:component>

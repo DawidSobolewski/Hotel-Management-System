@@ -1,0 +1,10 @@
+<aura:event type="COMPONENT" description="Event template">
+	<aura:attribute name="hotelId" type="String" />
+    <aura:attribute name="roomType" type="String" />
+    <aura:attribute name="startDate" type="String" />
+    <aura:attribute name="endDate" type="String" />
+    <aura:attribute name="tv" type="boolean" />
+    <aura:attribute name="minibar" type="boolean" />
+    <aura:attribute name="bathroom" type="boolean" />
+    <aura:attribute name="balcony" type="boolean" />
+</aura:event>
